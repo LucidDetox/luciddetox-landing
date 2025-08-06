@@ -312,15 +312,142 @@
             background: white;
         }
 
+        /* Chart Section Styles */
+        .chart-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .chart-wrapper {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chart-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+        }
+        
+        .chart-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+        
+        .chart-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #ffd700, #ffed4a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .chart-svg {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 20px auto;
+        }
+        
+        .axis-line {
+            stroke: rgba(255, 255, 255, 0.6);
+            stroke-width: 2;
+        }
+        
+        .grid-line {
+            stroke: rgba(255, 255, 255, 0.2);
+            stroke-width: 1;
+            stroke-dasharray: 4,4;
+        }
+        
+        .trend-line {
+            stroke: #00ff88;
+            stroke-width: 4;
+            fill: none;
+            filter: drop-shadow(0 0 10px #00ff88);
+            stroke-linecap: round;
+        }
+        
+        .data-point {
+            fill: #ffd700;
+            stroke: white;
+            stroke-width: 2;
+            filter: drop-shadow(0 0 8px #ffd700);
+        }
+        
+        .label-text {
+            fill: white;
+            font-size: 14px;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        
+        .axis-label {
+            fill: rgba(255, 255, 255, 0.8);
+            font-size: 12px;
+            text-anchor: middle;
+        }
+        
+        .chart-explanation {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 30px auto 0;
+        }
+        
+        .science-highlight {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #ffd700;
+            margin-top: 30px;
+        }
+        
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px #00ff88); }
+            50% { filter: drop-shadow(0 0 20px #00ff88); }
+        }
+        
+        .trend-line {
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .data-point {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
         /* Sleepy Superpower Section */
         .sleepy-superpower {
-            padding: 100px 0;
+            padding: 50px 0;
             background: white;
         }
 
         /* Target Audience */
         .target-audience {
-            padding: 100px 0;
+            padding: 50px 0;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
 
@@ -363,7 +490,7 @@
 
         /* Pricing Section */
         .pricing {
-            padding: 100px 0;
+            padding: 50px 0;
             background: white;
         }
 
@@ -433,6 +560,14 @@
             .nav-links {
                 display: none;
             }
+            
+            .chart-title {
+                font-size: 2rem;
+            }
+            
+            .chart-svg {
+                height: 250px;
+            }
         }
     </style>
 </head>
@@ -465,6 +600,83 @@
                 <h2 style="font-size: 2rem; margin-bottom: 20px; color: #333;"><strong>If you've tried therapy, yoga, microdosing - or even powerful psychoactives like ayahuasca - and still feel trapped...</strong></h2>
                 <p style="font-size: 1.2rem; color: #666; line-height: 1.6; max-width: 800px; margin: 0 auto;">It's not because you're not trying hard enough. It's because your system is jammed with <strong>toxic residue and energetic misalignment -</strong> the exact things that cloud high-frequency spiritual transmission.</p>
                 <p style="font-size: 1.2rem; color: #667eea; margin-top: 30px; font-weight: bold;"><strong>LucidDetox™</strong> is a 7-day experience, designed by certified professionals, to <strong>reset your system, unlock higher dream guidance, and reconnect you to purpose -</strong> without chaos, risky substances, or expensive retreats.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="chart-section">
+        <div class="container">
+            <div class="chart-wrapper">
+                <div class="chart-content">
+                    <h2 class="chart-title">The more you detox<br>the more you dream</h2>
+                    
+                    <svg class="chart-svg" viewBox="0 0 600 300">
+                        <!-- Grid lines -->
+                        <defs>
+                            <linearGradient id="chartGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.2" />
+                                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.2" />
+                            </linearGradient>
+                        </defs>
+                        
+                        <!-- Background gradient -->
+                        <rect x="60" y="40" width="480" height="200" fill="url(#chartGradient)" rx="10"/>
+                        
+                        <!-- Grid lines -->
+                        <g class="grid">
+                            <line x1="60" y1="90" x2="540" y2="90" class="grid-line" />
+                            <line x1="60" y1="140" x2="540" y2="140" class="grid-line" />
+                            <line x1="60" y1="190" x2="540" y2="190" class="grid-line" />
+                            
+                            <line x1="160" y1="40" x2="160" y2="240" class="grid-line" />
+                            <line x1="260" y1="40" x2="260" y2="240" class="grid-line" />
+                            <line x1="360" y1="40" x2="360" y2="240" class="grid-line" />
+                            <line x1="460" y1="40" x2="460" y2="240" class="grid-line" />
+                        </g>
+                        
+                        <!-- Axes -->
+                        <line x1="60" y1="240" x2="540" y2="240" class="axis-line" />
+                        <line x1="60" y1="240" x2="60" y2="40" class="axis-line" />
+                        
+                        <!-- Trend line -->
+                        <path d="M 80 220 Q 200 180 300 120 Q 400 80 520 60" class="trend-line" />
+                        
+                        <!-- Data points -->
+                        <circle cx="80" cy="220" r="6" class="data-point" />
+                        <circle cx="200" cy="180" r="6" class="data-point" />
+                        <circle cx="300" cy="120" r="6" class="data-point" />
+                        <circle cx="400" cy="80" r="6" class="data-point" />
+                        <circle cx="520" cy="60" r="6" class="data-point" />
+                        
+                        <!-- Labels -->
+                        <text x="300" y="270" class="label-text">DETOXIFICATION LEVEL</text>
+                        <text x="25" y="145" class="label-text" transform="rotate(-90 25 145)">DREAM RECALL</text>
+                        
+                        <!-- Axis labels -->
+                        <text x="80" y="255" class="axis-label">Day 1</text>
+                        <text x="200" y="255" class="axis-label">Day 3</text>
+                        <text x="300" y="255" class="axis-label">Day 5</text>
+                        <text x="400" y="255" class="axis-label">Day 7</text>
+                        <text x="520" y="255" class="axis-label">Beyond</text>
+                        
+                        <text x="50" y="225" class="axis-label">Low</text>
+                        <text x="50" y="145" class="axis-label">Med</text>
+                        <text x="50" y="65" class="axis-label">High</text>
+                    </svg>
+                    
+                    <div class="chart-explanation">
+                        <h3 style="font-size: 2.2rem; margin-bottom: 20px; font-weight: bold;">The Science Behind the Connection</h3>
+                        <p>
+                            This isn't just theory. <strong>As your body clears toxins, your mind becomes more receptive to dream states.</strong> 
+                            Clean systems = clear dreams = profound insights.
+                        </p>
+                        
+                        <div class="science-highlight">
+                            <p><strong>💡 Why This Works:</strong></p>
+                            <p>When your system is overloaded with toxins, your brain's natural dreaming mechanisms are suppressed. The detox protocol creates the optimal conditions for REM sleep and lucid dreaming by clearing physical blockages and aligning your circadian rhythms.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -575,10 +787,14 @@
 
     <section class="pricing">
         <div class="container">
-            <div style="text-align: center; padding: 60px 0; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); border-radius: 20px;">
-                <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: #333;">💸 <strong>Limited Beta Offer: $97 → $47</strong></h2>
-                <p style="color: #666; max-width: 600px; margin: 0 auto;">This is the <strong>first public wave of LucidDetox™.</strong> You'll join as a <strong>founding member</strong>, lock in lifetime access, and be part of shaping the experience with direct feedback.</p>
-                <div style="margin-top: 30px;">
+            <div style="text-align: center; padding: 60px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; position: relative; overflow: hidden;">
+                <!-- Animated background elements -->
+                <div style="position: absolute; top: 20px; right: 30px; width: 100px; height: 100px; background: rgba(255, 215, 0, 0.1); border-radius: 50%; animation: float 6s ease-in-out infinite;"></div>
+                <div style="position: absolute; bottom: 30px; left: 50px; width: 60px; height: 60px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; animation: float 8s ease-in-out infinite reverse;"></div>
+                
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: white; position: relative; z-index: 2;">💸 <strong>Limited Beta Offer: $97 → $47</strong></h2>
+                <p style="color: rgba(255, 255, 255, 0.9); max-width: 600px; margin: 0 auto; position: relative; z-index: 2;">This is the <strong>first public wave of LucidDetox™.</strong> You'll join as a <strong>founding member</strong>, lock in lifetime access, and be part of shaping the experience with direct feedback.</p>
+                <div style="margin-top: 30px; position: relative; z-index: 2;">
                     <a href="https://luciddetox.teachable.com/p/lucid-detox1?utm_source=landing-page&utm_medium=pricing-cta&utm_campaign=beta-launch" class="cta-button">🔥 Ready to Reset?</a>
                 </div>
             </div>
@@ -586,7 +802,7 @@
     </section>
 
     <section class="benefits" id="benefits">
-        <div class="container">
+        <div class="container" style="padding-top: 50px;">
             <h2 class="section-title"><strong>FAQs</strong></h2>
             
             <div class="faq-list">
@@ -708,6 +924,32 @@
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
+
+        // Chart animation on scroll
+        const chartObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Trigger chart animations
+                    const trendLine = entry.target.querySelector('.trend-line');
+                    const dataPoints = entry.target.querySelectorAll('.data-point');
+                    
+                    if (trendLine) {
+                        trendLine.style.animation = 'glow 3s ease-in-out infinite';
+                    }
+                    
+                    dataPoints.forEach((point, index) => {
+                        point.style.animation = `pulse 2s ease-in-out infinite ${index * 0.2}s`;
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        // Observe the chart
+        const chartSection = document.querySelector('.chart-section');
+        if (chartSection) {
+            chartObserver.observe(chartSection);
+        }
     </script>
 </body>
 </html>
+                
